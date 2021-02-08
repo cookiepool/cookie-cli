@@ -1,0 +1,37 @@
+{
+  "name": "cookie-cli",
+  "version": "1.0.0",
+  "description": "a personal cli lib",
+  "bin": {
+    "cookie-cli": "bin/cookie-cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cookiepool/cookie-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "vue",
+    "react"
+  ],
+  "author": "cookiepool",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cookiepool/cookie-cli/issues"
+  },
+  "homepage": "https://github.com/cookiepool/cookie-cli#readme",
+  "engines": {
+    "node": ">=8.9"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.2.0",
+    "semver": "^7.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.19.0"
+  }
+}
