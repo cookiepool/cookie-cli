@@ -1,3 +1,6 @@
+/***
+ * 加载默认和本地保存的选项
+ * ***/
 const os = require('os');
 const fs = require('fs');
 const path = require('path');

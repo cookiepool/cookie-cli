@@ -1,3 +1,3 @@
-const { loadLocalSavedPreset } = require('./config/options');
+const { loadLocalSavedPreset } = require('./utils/options');
 
 console.log(JSON.stringify(loadLocalSavedPreset()));
