@@ -1,6 +1,6 @@
 {
   "name": "cookie-cli",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "a personal cli lib",
   "bin": {
     "cookie-cli": "bin/cookie-cli.js"
@@ -24,11 +24,12 @@
   },
   "homepage": "https://github.com/cookiepool/cookie-cli#readme",
   "engines": {
-    "node": ">=8.9"
+    "node": ">=12"
   },
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.2.0",
+    "minimist": "^1.2.5",
     "semver": "^7.3.2"
   },
   "devDependencies": {
