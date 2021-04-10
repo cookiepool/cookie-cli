@@ -54,7 +54,7 @@ program.command('create <project-name>')
         The first one will be used as the app\'s name, the rest are ignored.`));
     }
 
-    // require('../packages/cli/create-command/create')(name);
+    require('../packages/cli/create-command/create')(name);
   });
   
 program.parse(process.argv);
