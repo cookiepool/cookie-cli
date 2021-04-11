@@ -4,7 +4,7 @@ module.exports = {
   },
   extends: [],
   parserOptions: {
-    'ecmaVersion': 7
+    'ecmaVersion': 8
   },
   globals: {},
   rules: {
@@ -17,6 +17,7 @@ module.exports = {
       'vars': 'all',
       'args': 'none',
       'ignoreRestSiblings': false
-    }]
+    }],
+    'generator-star-spacing': 0
   }
 };

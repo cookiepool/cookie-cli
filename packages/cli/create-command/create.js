@@ -1,9 +1,11 @@
 const path = require('path');
 const chalk = require('chalk');
+const fs = require('fs-extra');
+const inquirer = require('inquirer');
 
 const validateNpmPackageName = require("validate-npm-package-name");
 
-async function create(name) {
+async function create (name, options) {
   const cwdDir = process.cwd();
   const projectName = name;
   const isPonitName = projectName === '.';
@@ -11,7 +13,7 @@ async function create(name) {
   // 项目名字
   const curProjName = isPonitName ? path.relative('../', cwdDir) : projectName;
   // 项目目标路径
-  const targetDir = path.relative(cwdDir, projectName || '.');
+  const targetDir = path.resolve(cwdDir, projectName || '.');
 
   // 验证项目名是否符合npm包规范
   const results = validateNpmPackageName(curProjName);
@@ -29,11 +31,51 @@ async function create(name) {
     process.exit(1);
   }
 
-  console.log('----------here-----------')
+  if(fs.existsSync(targetDir)) {
+    // 使用--force命令
+    if(options.force) {
+      await fs.remove(targetDir);
+    } else {
+      if(isPonitName) {
+        const { ok } = await inquirer.prompt([
+          {
+            name: 'ok',
+            type: 'confirm',
+            message: 'Create a new project in current directory?'
+          }
+        ]);
+
+        if(!ok) {
+          return;
+        }
+      } else {
+        // 如果创建的项目跟当前文件夹下的目录同名了
+        const { action } = await inquirer.prompt([
+          {
+            name: 'action',
+            type: 'list',
+            message: `Target directory ${ chalk.blueBright(targetDir) } is exited, please select a action!`,
+            choices: [
+              { name: 'overwrite', value: 'overwrite'},
+              { name: 'cancel', value: 'cancel'}
+            ]
+          }
+        ]);       
+
+        if(!action) {
+          return;
+        } else if(action === 'overwrite') {
+          console.log( chalk.red(`Rmoveing ${ targetDir } ......`));
+          await fs.remove(targetDir);
+        }
+      }
+    }
+  }
+  console.log('----------here-----------');
 }
 
-module.exports = (name) => {
-  return create(name).catch((err) => {
+module.exports = (name, cmd) => {
+  return create(name, cmd).catch((err) => {
     console.error(err);
   });
-}
+};

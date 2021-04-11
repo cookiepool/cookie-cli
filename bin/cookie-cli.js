@@ -42,19 +42,21 @@ for(let ver of ENDOFLIFE_NODE) {
 const { program } = require('commander');
 const minimist = require('minimist');
 
-program.version(`cookie-cli ${require('../package.json').version}`);
+program.version(`cookie-cli ${require('../package.json').version}`)
+  .usage('<command> [options]');
 
 // 定义create命令
-program.command('create <project-name>')
+program.command('init <project-name>')
   .description('create a new project by cookie-cli')
-  .action((name) => {
+  .option('-f --force', 'Remove existing directory')
+  .action((name, cmd) => {
     // 多写参数给出警告
     if(minimist(process.argv.slice(3))._.length > 1) {
       console.log(chalk.yellow(`\n Info: You provided more than one argument. 
         The first one will be used as the app\'s name, the rest are ignored.`));
     }
 
-    require('../packages/cli/create-command/create')(name);
+    require('../packages/cli/create-command/create')(name, cmd);
   });
   
 program.parse(process.argv);
