@@ -73,7 +73,7 @@ async function create (name, options) {
     }
   }
 
-  console.log( chalk.blueBright('---------- 生成目录前检测成功，开始项目生成操作 -----------'));
+  console.log( chalk.blueBright('---------- 检测通过，开始项目生成操作 -----------'));
 
   // 核心逻辑
   
