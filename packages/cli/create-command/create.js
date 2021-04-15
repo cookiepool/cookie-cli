@@ -31,6 +31,7 @@ async function create (name, options) {
     process.exit(1);
   }
 
+  // 判断当前新建项目的目录情况
   if(fs.existsSync(targetDir)) {
     // 使用--force命令
     if(options.force) {
@@ -71,7 +72,11 @@ async function create (name, options) {
       }
     }
   }
-  console.log('----------here-----------');
+
+  console.log( chalk.blueBright('---------- 生成目录前检测成功，开始项目生成操作 -----------'));
+
+  // 核心逻辑
+  
 }
 
 module.exports = (name, cmd) => {
