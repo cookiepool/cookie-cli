@@ -1,4 +1,4 @@
-module.exports = class promptModuleAPI {
+module.exports = class PromptModuleAPI {
   constructor(creator) {
     this.creator = creator;
   }

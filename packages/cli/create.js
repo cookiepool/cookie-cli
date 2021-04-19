@@ -2,8 +2,10 @@ const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const inquirer = require('inquirer');
-
 const validateNpmPackageName = require("validate-npm-package-name");
+
+const Creator = require('./Creator');
+const PromptModuleAPI = require('./promptModules/PromptModuleAPI');
 
 async function create (name, options) {
   const cwdDir = process.cwd();
@@ -76,7 +78,27 @@ async function create (name, options) {
   console.log( chalk.blueBright('---------- 检测通过，开始项目生成操作 -----------'));
 
   // 核心逻辑
-  
+  // 获取交互提示语
+  const creator = new Creator();
+  const promptModules = getPromptModules();
+  const promptAPI = new PromptModuleAPI(creator);
+  promptModules.forEach((cb) => cb(promptAPI));
+
+  // 获取用户选择
+  const answers = await inquirer.prompt(creator.getFinalPrompts());
+  console.log(creator.getFinalPrompts());
+  console.log(answers);
+
+  console.log('--- THE END ---');
+}
+
+function getPromptModules() {
+  return [
+    'babel',
+    'lint',
+    'vue-router',
+    'vuex'
+  ].map((file) => require(`./promptModules/${ file }.js`));
 }
 
 module.exports = (name, cmd) => {

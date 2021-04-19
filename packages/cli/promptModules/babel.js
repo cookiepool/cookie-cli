@@ -1,4 +1,4 @@
-modules.exports = (api) => {
+module.exports = (api) => {
   api.injectFeature({
     name: 'babel',
     value: 'babel',
