@@ -86,8 +86,19 @@ async function create (name, options) {
 
   // 获取用户选择
   const answers = await inquirer.prompt(creator.getFinalPrompts());
-  console.log(creator.getFinalPrompts());
-  console.log(answers);
+  // vue、webpack暂时默认为必选
+  answers.features.unshift('vue', 'webpack');
+  // console.log(creator.getFinalPrompts());
+  // console.log(answers);
+
+  const pkg = {
+    name,
+    version: '0.1.0',
+    dependencies: {},
+    devDependencies: {}
+  };
+
+
 
   console.log('--- THE END ---');
 }
