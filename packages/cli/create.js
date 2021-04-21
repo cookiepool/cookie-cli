@@ -85,11 +85,17 @@ async function create (name, options) {
   promptModules.forEach((cb) => cb(promptAPI));
 
   // 获取用户选择
+  /***
+   * {
+        features: [ 'vue', 'webpack', 'babel', 'linter', 'router', 'vuex' ],
+        lintcongfig: 'standard',
+        lintOn: [ 'save', 'commit' ],
+        historyMode: true
+      }
+   * ***/
   const answers = await inquirer.prompt(creator.getFinalPrompts());
   // vue、webpack暂时默认为必选
   answers.features.unshift('vue', 'webpack');
-  // console.log(creator.getFinalPrompts());
-  // console.log(answers);
 
   const pkg = {
     name,
@@ -98,7 +104,7 @@ async function create (name, options) {
     devDependencies: {}
   };
 
-
+  
 
   console.log('--- THE END ---');
 }

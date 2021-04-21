@@ -7,7 +7,7 @@ module.exports = (api) => {
   });
 
   api.injectPrompt({
-    name: 'lintcongfig',
+    name: 'eslintConfig',
     when: (answers) => answers.features.includes('linter'),
     type: 'list',
     message: 'Pick a congfig type',
