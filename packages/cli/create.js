@@ -1,11 +1,15 @@
+/***
+ * 生成项目的核心文件
+ * ***/
 const path = require('path');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const inquirer = require('inquirer');
 const validateNpmPackageName = require("validate-npm-package-name");
 
-const Creator = require('./Creator');
+const Creator = require('./promptModules/Creator');
 const PromptModuleAPI = require('./promptModules/PromptModuleAPI');
+const Generator = require('./generator/Generator');
 
 async function create (name, options) {
   const cwdDir = process.cwd();
@@ -104,7 +108,7 @@ async function create (name, options) {
     devDependencies: {}
   };
 
-  
+  const generator = new Generator(pkg, path.join(process.cwd(), name));
 
   console.log('--- THE END ---');
 }
@@ -115,7 +119,7 @@ function getPromptModules() {
     'lint',
     'vue-router',
     'vuex'
-  ].map((file) => require(`./promptModules/${ file }.js`));
+  ].map((file) => require(`./promptModules/prompts/${ file }.js`));
 }
 
 module.exports = (name, cmd) => {

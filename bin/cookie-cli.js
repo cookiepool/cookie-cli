@@ -46,7 +46,7 @@ program.version(`cookie-cli ${require('../package.json').version}`)
   .usage('<command> [options]');
 
 // 定义create命令
-program.command('init <project-name>')
+program.command('create <project-name>')
   .description('create a new project by cookie-cli')
   .option('-f --force', 'Remove existing directory')
   .action((name, cmd) => {

@@ -1,3 +1,6 @@
+/***
+ * 用于生成inquirer.js交互提示
+ * ***/
 module.exports = class Creator {
   constructor() {
     this.injectFeature = {
