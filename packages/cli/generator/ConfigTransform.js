@@ -1,3 +1,5 @@
+const transforms = require('../utils/configTransforms');
+
 class ConfigTransform {
   constructor(fileOptions) {
     this.fileTypes = fileOptions.file;
@@ -10,6 +12,19 @@ class ConfigTransform {
     }
 
     const { type, filename } = file;
+
+    const transform = transforms[type];
+
+    const content = transform.write({
+      value,
+      filename,
+      context
+    });
+
+    return { 
+      filename,
+      content
+    };
   }
 
   // 获取提取出来的文件类型和文件名

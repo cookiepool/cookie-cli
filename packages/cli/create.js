@@ -108,7 +108,7 @@ async function create (name, options) {
     devDependencies: {}
   };
 
-  const generator = new Generator(pkg, path.join(process.cwd(), name));
+  // const generator = new Generator(pkg, path.join(process.cwd(), name));
 
   console.log('--- THE END ---');
 }
