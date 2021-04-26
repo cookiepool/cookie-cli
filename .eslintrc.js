@@ -4,7 +4,7 @@ module.exports = {
   },
   extends: [],
   parserOptions: {
-    'ecmaVersion': 8
+    'ecmaVersion': 9
   },
   globals: {},
   rules: {
