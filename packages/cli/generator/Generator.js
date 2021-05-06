@@ -1,13 +1,13 @@
 const ejs = require('ejs');
 const path = require('path');
 const globby = require('globby');
-const isBinaryFile = require('isbinaryfile');
+const isBinaryFileSync = require('isbinaryfile').isBinaryFileSync;
 const fs = require('fs-extra');
 const { runTransformation } = require('vue-codemod');
 
 const sortObject = require('../utils/sortObject');
 const writeFileTree = require('../utils/writeFileTree');
-const normaliseFilePaths = require('../utils/normaliseFilePaths');
+const normaliseFilePaths = require('../utils/normalizeFilePaths');
 
 const ConfigTransform = require('./ConfigTransform');
 /***
@@ -131,13 +131,13 @@ class Generator {
     return content;
   }
   // 1.2、解析模板文件
-  resolveFiles() {
+  async resolveFiles() {
     // files是一个对象
     const files = this.files;
-    for(let middleware of this.fileMiddlewares) {
-      middleware(files, ejs.render);
+    for(const middleware of this.fileMiddlewares) {
+      await middleware(files, ejs.render);
     }
-  
+
     // 将反斜杠转换为正斜杠，针对Windows
     normaliseFilePaths(files);
   
@@ -212,7 +212,6 @@ class Generator {
   render(source, additionalOptions, ejsOptions) {
     // 获取模板的父目录路径，也就是generator下面的template文件夹
     const baseDir = extractCallDir();
-
     source = path.resolve(baseDir, source);
     this.injectFileMiddleware(async (files) => {
       const data = this.resolveOptions(additionalOptions);
@@ -227,7 +226,7 @@ class Generator {
         const content = this.renderFile(sourcePath, data, ejsOptions);
 
         if(Buffer.isBuffer(content) || /[^\s]/.test(content)) {
-          files[sourcePath] = content;
+          files[pathInfo] = content;
         }
       }
     });
@@ -243,7 +242,7 @@ class Generator {
   }
   renderFile(name, data, ejsOptions) {
     // 判断是否是二进制文件
-    if(isBinaryFile(name)) {
+    if(isBinaryFileSync(name)) {
       return fs.readFileSync(name);
     }
 

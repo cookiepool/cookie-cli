@@ -2,11 +2,9 @@ module.exports = {
   env: {
     node: true
   },
-  extends: [],
   parserOptions: {
-    'ecmaVersion': 9
+    'ecmaVersion': 2020
   },
-  globals: {},
   rules: {
     // 缩进使用2个空格
     'indent': ['error', 2],

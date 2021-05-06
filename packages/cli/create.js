@@ -11,6 +11,8 @@ const Creator = require('./promptModules/Creator');
 const PromptModuleAPI = require('./promptModules/PromptModuleAPI');
 const Generator = require('./generator/Generator');
 
+const executeCommand = require('./utils/executeCommand');
+
 async function create (name, options) {
   const cwdDir = process.cwd();
   const projectName = name;
@@ -79,7 +81,7 @@ async function create (name, options) {
     }
   }
 
-  console.log( chalk.blueBright('---------- 检测通过，开始项目生成操作 -----------'));
+  console.log(chalk.blueBright('---------- TEST PASSED, START THE PROJECT GENERATION OPERATION-----------'));
 
   // 核心逻辑
   // 获取交互提示语
@@ -92,7 +94,7 @@ async function create (name, options) {
   /***
    * {
         features: [ 'vue', 'webpack', 'babel', 'linter', 'router', 'vuex' ],
-        lintcongfig: 'standard',
+        eslintConfig: 'standard',
         lintOn: [ 'save', 'commit' ],
         historyMode: true
       }
@@ -108,9 +110,17 @@ async function create (name, options) {
     devDependencies: {}
   };
 
-  // const generator = new Generator(pkg, path.join(process.cwd(), name));
+  const generator = new Generator(pkg, path.join(process.cwd(), name));
+  answers.features.forEach((feature) => {
+    require(`./generator/${ feature }`)(generator, answers);
+  });
+  await generator.generate();
 
-  console.log('--- THE END ---');
+  console.log(chalk.blueBright('---------- START DOWNLOADING PACKAGES ----------'));
+
+  await executeCommand('npm', path.join(process.cwd(), name));
+
+  console.log(chalk.blueBright('---------- THE END ----------'));
 }
 
 function getPromptModules() {
