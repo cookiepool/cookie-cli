@@ -1,9 +1,12 @@
 module.exports = {
+  root: true,
   env: {
-    node: true
+    node: true,
+    es6: true // 启用ES6全局变量
   },
   parserOptions: {
-    'ecmaVersion': 2020
+    ecmaVersion: 9,
+    sourceType: 'module'
   },
   rules: {
     // 缩进使用2个空格

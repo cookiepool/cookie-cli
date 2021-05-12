@@ -21,9 +21,6 @@ const routes = [
 ];
 
 const router = new VueRouter({
-	<%_ if (historyMode) { _%>
-	mode: 'history',
-	<%_ } _%>
 	routes
 });
 
