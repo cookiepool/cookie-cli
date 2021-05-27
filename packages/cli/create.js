@@ -12,6 +12,7 @@ const PromptModuleAPI = require('./promptModules/PromptModuleAPI');
 const Generator = require('./generator/Generator');
 
 const executeCommand = require('./utils/executeCommand');
+const { platformPrompts, buildToolsPrompts } = require('./utils/prePrompts');
 
 async function create (name, options) {
   const cwdDir = process.cwd();
@@ -83,10 +84,17 @@ async function create (name, options) {
 
   console.log(chalk.blueBright('---------- TEST PASSED, START THE PROJECT GENERATION OPERATION-----------'));
 
+  /***
+   * 在获取features前，先选择对应的架构和构建工具，根据结果显示指定的
+   * ***/
+  const preAnswers = await inquirer.prompt([platformPrompts, buildToolsPrompts]);
+  console.log(preAnswers);
+
   // 核心逻辑
   // 获取交互提示语
   const creator = new Creator();
-  const promptModules = getPromptModules();
+  // 根据preAnswer来选择需要注入的features propmts
+  const promptModules = getPromptModules(preAnswers);
   const promptAPI = new PromptModuleAPI(creator);
   promptModules.forEach((cb) => cb(promptAPI));
 
