@@ -108,8 +108,8 @@ async function create (name, options) {
       }
    * ***/
   const answers = await inquirer.prompt(creator.getFinalPrompts());
-  // vue、webpack暂时默认为必选
-  answers.features.unshift('vue', 'webpack');
+  answers.features.unshift(preAnswers.frame, preAnswers.build);
+  console.log(answers);
 
   const pkg = {
     name,

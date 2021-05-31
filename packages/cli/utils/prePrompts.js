@@ -3,8 +3,14 @@ exports.platformPrompts = {
   message: 'Select the frame',
   type: 'list',
   choices: [
-    'vue',
-    'react'
+    { 
+      name: 'Vue',
+      value: 'vue'
+    },
+    { 
+      name: 'React',
+      value: 'react'
+    }
   ]
 };
 
@@ -13,10 +19,16 @@ exports.buildToolsPrompts = {
   message: 'Select the build tool',
   type: 'list',
   choices: [
-    'webpack',
-    'vite'
+    {
+      name: 'Webpack',
+      value: 'webpack'
+    },
+    {
+      name: 'Vite',
+      value: 'vite'
+    }
   ]
 };
 
-exports.vue_webpack = ['babel', 'lint', 'vue-router', 'vuex'];
-exports.vue_vite = ['lint', 'vue-router', 'vuex'];
+exports.vue_webpack = ['babel', 'vueVersion', 'lint', 'router', 'vuex'];
+exports.vue_vite = ['vueVersion', 'lint', 'router', 'vuex'];

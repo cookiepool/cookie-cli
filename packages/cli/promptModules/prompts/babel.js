@@ -1,8 +1,8 @@
 module.exports = (api) => {
   api.injectFeature({
-    name: 'babel',
+    name: 'Babel',
     value: 'babel',
-    description: 'Babel config',
+    description: 'Transpile modern JavaScript to older versions (for compatibility)',
     checked: true
   });
 };

@@ -2,7 +2,7 @@ module.exports = (api) => {
   api.injectFeature({
     name: 'Linter / Formater',
     value: 'linter',
-    description: 'Linter / Formater config',
+    description: 'Check and enforce code quality with ESLint or Prettier',
     checked: true
   });
 
@@ -10,16 +10,12 @@ module.exports = (api) => {
     name: 'eslintConfig',
     when: (answers) => answers.features.includes('linter'),
     type: 'list',
-    message: 'Pick a congfig type',
-    description: 'ESLint config',
+    message: 'Pick a linter / formatter config:',
+    description: 'Checking code errors and enforcing an homogeoneous code style is recommended.',
     choices: [
       { 
-        name: 'ESLint + Airbnb config',
-        value: 'airbnb'
-      },
-      { 
-        name: 'ESLint + Standard config',
-        value: 'standard'
+        name: 'ESLint + Prettier',
+        value: 'prettier'
       }
     ]
   });

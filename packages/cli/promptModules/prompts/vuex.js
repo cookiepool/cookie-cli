@@ -2,6 +2,6 @@ module.exports = (api) => {
   api.injectFeature({
     name: 'Vuex',
     value: 'vuex',
-    description: 'Vuex config'
+    description: 'Manage the app state with a centralized store'
   });
 };

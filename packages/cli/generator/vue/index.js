@@ -3,7 +3,7 @@ module.exports = (generator) => {
 
   generator.extendPackage({
     dependencies: {
-      vue: '^2.6.12',
+      'vue': '^2.6.12',
     },
     devDependencies: {
       'vue-template-compiler': '^2.6.12',
