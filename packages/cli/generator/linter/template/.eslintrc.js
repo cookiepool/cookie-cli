@@ -1,30 +1,26 @@
 module.exports = {
-	root: true,
-	parserOptions: {
-		ecmaVersion: 2019,
-		parser: 'babel-eslint',
-	},
-	env: {
-		browser: true,
-		node: true,
-	},
-	extends: [
-		'plugin:vue/essential',
-		<%_ if (hasAirbnb) { _%>
-		'airbnb-base',
-		<%_ } else { _%>
-		'standard',
-		<%_ } _%>
-	],
-	rules: {
-		'no-console': 'off',
-		'array-element-newline': ['error', 'consistent'],
-		indent: ['error', 2, { MemberExpression: 0, SwitchCase: 1 }],
-		quotes: ['error', 'single', { allowTemplateLiterals: true }],
-		'linebreak-style': 'off',
-		semi: ['error', 'never'],
-		'comma-dangle': 'off',
-		'import/no-unresolved': 'off',
-		'eol-last': 'off',
-	},
+  root: true,
+  env: {
+    node: true
+  },
+  plugins: ['vue', 'prettier'],
+  extends: ['plugin:vue/recommended', 'plugin:prettier/recommended'],
+  parserOptions: {
+    parser: 'babel-eslint',
+    sourceType: 'module',
+    ecmaVersion: 2020
+  },
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        arrowParens: 'always',
+        endOfLine: 'auto',
+        trailingComma: 'none'
+      }
+    ],
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+  }
 };

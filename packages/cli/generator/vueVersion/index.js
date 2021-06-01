@@ -1,4 +1,4 @@
-module.exports = (generator, options = {}) {
+module.exports = (generator, options = {}) => {
   let vueVersionConfig;
   if(options.vueVersion === '3') {
     vueVersionConfig = {
@@ -9,7 +9,7 @@ module.exports = (generator, options = {}) {
         '@vue/compiler-sfc': '^3.0.11',
         'vue-loader': '^16.2.0'
       }
-    }
+    };
   } else {
     vueVersionConfig = {
       dependencies: {
@@ -19,8 +19,8 @@ module.exports = (generator, options = {}) {
         'vue-template-compiler': '^2.6.12',
         'vue-loader': '^15.7.2'
       }
-    }
+    };
   }
 
-  generator.extendPackage(vueVersionConfig)
-}
+  generator.extendPackage(vueVersionConfig);
+};

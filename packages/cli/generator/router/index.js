@@ -3,15 +3,25 @@ module.exports = (generator, options = {}) => {
 
   generator.injectRootOptions(generator.entryFile, `router`);
 
-  generator.extendPackage({
-    dependencies: {
-      'vue-router': '^3.5.1',
-    },
-  });
+  let routerConfig;
+  if(options.vueVersion === '3') {
+    routerConfig = {
+      dependencies: {
+        'vue-router': '^4.0.8',
+      }
+    };
+  } else {
+    routerConfig = {
+      dependencies: {
+        'vue-router': '^3.2.0',
+      }
+    };
+  }
+
+  generator.extendPackage(routerConfig);
 
   generator.render('./template', {
     historyMode: options.historyMode,
-    hasTypeScript: false,
-    plugins: [],
+    vueVersion: options.vueVersion
   });
 };

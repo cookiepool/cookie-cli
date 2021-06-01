@@ -100,12 +100,22 @@ async function create (name, options) {
 
   // 获取用户选择
   /***
-   * {
-        features: [ 'vue', 'webpack', 'babel', 'linter', 'router', 'vuex' ],
-        eslintConfig: 'standard',
-        lintOn: [ 'save', 'commit' ],
-        historyMode: true
-      }
+   * 
+    {
+      features: [
+        'vue',
+        'webpack',
+        'babel',
+        'vueVersion',
+        'linter',
+        'router',
+        'vuex'
+      ],
+      vueVersion: '3',
+      eslintConfig: 'prettier',
+      lintOn: [ 'save', 'commit' ],
+      historyMode: false
+    }
    * ***/
   const answers = await inquirer.prompt(creator.getFinalPrompts());
   answers.features.unshift(preAnswers.frame, preAnswers.build);
