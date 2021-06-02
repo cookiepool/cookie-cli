@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 <%_ if (vueVersion === '3') { _%>
 <%_ if (historyMode) { _%>
 import { createRouter, createWebHistory } from 'vue-router';
-<%_ else { _%>
+<%_ } else { _%>
 import { createRouter, createWebHashHistory } from 'vue-router';
 <%_ } _%>
 <%_ } _%>
@@ -45,7 +45,7 @@ const router = new VueRouter({
 const router = createRouter({
 	<%_ if (historyMode) { _%>
 	history: createWebHashHistory(),
-	<%_ else { _%>
+	<%_ } else { _%>
 		history: createWebHistory(),
 	<%_ } _%>
 	routes

@@ -17,5 +17,10 @@ module.exports = (generator) => {
       '@babel/plugin-syntax-dynamic-import': '^7.7.4',
       'babel-loader': '^8.0.6',
     },
+    browserslist: [
+      '> 1%',
+      'last 2 versions',
+      'not dead',
+    ]
   });
 };
