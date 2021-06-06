@@ -1,22 +1,27 @@
 module.exports = (generator, options = {}) => {
   generator.extendPackage({
     scripts: {
-      dev: 'webpack-dev-server --config ./build/dev.config.js',
-      build: 'webpack --config ./build/pro.config.js',
+      "dev": "webpack-dev-server --config ./build/webpack.dev.js --progress",
+      "build": "webpack --config ./build/webpack.prod.js --progress",
     },
     devDependencies: {
-      'clean-webpack-plugin': '^3.0.0',
-      'css-loader': '^5.0.2',
-      'file-loader': '^6.2.0',
-      'url-loader': '^4.1.1',
-      'html-webpack-plugin': '^4.5.1',
-      'style-loader': '^2.0.0',
-      'vue-loader': '^15.9.6',
-      webpack: '^4.32.2',
-      'webpack-cli': '^3.3.11',
-      'webpack-dev-server': '^3.11.2',
-      'webpack-merge': '^4.2.1',
-      webpackbar: '^4.0.0',
+      "@intervolga/optimize-cssnano-plugin": "^1.0.6",
+      "clean-webpack-plugin": "^3.0.0",
+      "copy-webpack-plugin": "^5.1.0",
+      "css-loader": "^3.2.1",
+      "dart-sass": "^1.23.7",
+      "file-loader": "^5.0.2",
+      "friendly-errors-webpack-plugin": "^1.7.0",
+      "html-webpack-plugin": "^3.2.0",
+      "mini-css-extract-plugin": "^0.8.0",
+      "sass-loader": "^8.0.0",
+      "style-loader": "^1.0.1",
+      "url-loader": "^3.0.0",
+      "webpack": "^4.41.2",
+      "webpack-bundle-analyzer": "^3.6.0",
+      "webpack-cli": "^3.3.10",
+      "webpack-dev-server": "^3.9.0",
+      "webpack-merge": "^4.2.2"
     },
   });
 

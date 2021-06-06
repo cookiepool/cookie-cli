@@ -1,7 +1,7 @@
 module.exports = (generator, options = {}) => {
-  generator.injectImports(generator.entryFile, `import router from './router'`);
+  // generator.injectImports(generator.entryFile, `import router from './router'`);
 
-  generator.injectRootOptions(generator.entryFile, `router`);
+  // generator.injectRootOptions(generator.entryFile, `router`);
 
   let routerConfig;
   if(options.vueVersion === '3') {

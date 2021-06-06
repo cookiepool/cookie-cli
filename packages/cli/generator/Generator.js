@@ -142,27 +142,27 @@ class Generator {
     normaliseFilePaths(files);
   
     // 转换imports、options
-    Object.keys(files).forEach((file) => {
-      let imports = this.imports[file];
-      imports = imports instanceof Set ? Array.from(imports) : imports;
-      if(imports && imports.length > 0) {
-        files[file] = runTransformation(
-          { path: file, source: files[file]},
-          require('../utils/codemods/injectImports'),
-          { imports }
-        );
-      }
+    // Object.keys(files).forEach((file) => {
+    //   let imports = this.imports[file];
+    //   imports = imports instanceof Set ? Array.from(imports) : imports;
+    //   if(imports && imports.length > 0) {
+    //     files[file] = runTransformation(
+    //       { path: file, source: files[file]},
+    //       require('../utils/codemods/injectImports'),
+    //       { imports }
+    //     );
+    //   }
   
-      let injections = this.rootOptions[file];
-      injections = injections instanceof Set ? Array.from(injections) : injections;
-      if(injections && injections.length > 0) {
-        files[file] = runTransformation(
-          { path: file, source: files[file]},
-          require('../utils/codemods/injectOptions'),
-          { injections }
-        );
-      }
-    });
+    //   let injections = this.rootOptions[file];
+    //   injections = injections instanceof Set ? Array.from(injections) : injections;
+    //   if(injections && injections.length > 0) {
+    //     files[file] = runTransformation(
+    //       { path: file, source: files[file]},
+    //       require('../utils/codemods/injectOptions'),
+    //       { injections }
+    //     );
+    //   }
+    // });
   }
   // 1.3、对package.json的字段进行排序
   sortPkg() {
