@@ -129,8 +129,14 @@ async function create (name, options) {
   };
 
   const generator = new Generator(pkg, path.join(process.cwd(), name));
+
+  if(!answers.features.includes('vueVersion')) {
+    console.log(chalk.red('Vue version must be chosen, please try it again!'));
+    process.exit(1);
+  }
+
   answers.features.forEach((feature) => {
-    require(`./generator/${ feature }`)(generator, answers);
+    require(`./generator/${ feature }`)(generator, answers, name);
   });
   await generator.generate();
 

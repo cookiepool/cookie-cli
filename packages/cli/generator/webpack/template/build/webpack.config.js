@@ -15,7 +15,7 @@ module.exports = {
   },
   module: {
     rules: [
-      <%_ if(hasBabel) { _%}
+      <%_ if(hasBabel) { _%>
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -99,6 +99,9 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
+      <% if (projectName) { %>
+      title: '<%= projectName %>',
+      <% } %>
       template: path.resolve(__dirname, '../public/index.html'),
       filename: path.resolve(__dirname, '../dist/index.html')
     }),

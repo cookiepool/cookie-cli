@@ -1,4 +1,4 @@
-module.exports = (generator, options = {}) => {
+module.exports = (generator, options = {}, projectName) => {
   generator.extendPackage({
     scripts: {
       "dev": "webpack-dev-server --config ./build/webpack.dev.js --progress",
@@ -26,7 +26,8 @@ module.exports = (generator, options = {}) => {
   });
 
   generator.render('./template', {
-    hasBabel: options.features.includes('babel'),
-    lintOnSave: options.lintOn.includes('save'),
+    hasBabel: options.lintOn && options.features.includes('babel'),
+    lintOnSave: options.lintOn && options.lintOn.includes('save'),
+    projectName: projectName || 'Default App Name'
   });
 };
