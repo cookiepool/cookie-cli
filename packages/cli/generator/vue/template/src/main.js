@@ -10,7 +10,6 @@ import router from './router';
 <%_ if(hasVuex) { _%>
 import store from './store';
 <%_ } _%>
-
 <%_ if (vueVersion === '2') { _%>
 Vue.config.productionTip = false;
 
@@ -24,7 +23,6 @@ new Vue({
   render: (h) => h(App),
 }).$mount('#app');
 <%_ } _%>
-
 <%_ if (vueVersion === '3') { _%>
 createApp(App)
   <%_ if(hasRouter) { _%>

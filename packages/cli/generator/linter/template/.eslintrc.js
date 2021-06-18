@@ -4,7 +4,12 @@ module.exports = {
     node: true
   },
   plugins: ['vue', 'prettier'],
+  <%_ if(vueVersion === '2') { _%>
   extends: ['plugin:vue/recommended', 'plugin:prettier/recommended'],
+  <%_ } _%>
+  <%_ if(vueVersion === '3') { _%>
+  extends: ['plugin:vue3/recommended', 'plugin:prettier/recommended'],
+  <%_ } _%>
   parserOptions: {
     parser: 'babel-eslint',
     sourceType: 'module',

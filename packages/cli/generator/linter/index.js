@@ -6,8 +6,10 @@ const map = {
   }
 };
 
-module.exports = (generator, { lintOn, eslintConfig }) => {
-  generator.render('./template');
+module.exports = (generator, { lintOn, eslintConfig, vueVersion }) => {
+  generator.render('./template', {
+    vueVersion: vueVersion
+  });
 
   generator.extendPackage({
     scripts: {

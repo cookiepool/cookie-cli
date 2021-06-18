@@ -10,6 +10,7 @@ module.exports = (generator, options = {}, projectName) => {
       "copy-webpack-plugin": "^5.1.0",
       "css-loader": "^3.2.1",
       "dart-sass": "^1.23.7",
+      "eslint-friendly-formatter": "^4.0.1",
       "file-loader": "^5.0.2",
       "friendly-errors-webpack-plugin": "^1.7.0",
       "html-webpack-plugin": "^3.2.0",

@@ -3,7 +3,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 <%_ } _%>
-
 <%_ if (vueVersion === '3') { _%>
 <%_ if (historyMode) { _%>
 import { createRouter, createWebHistory } from 'vue-router';
@@ -11,7 +10,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { createRouter, createWebHashHistory } from 'vue-router';
 <%_ } _%>
 <%_ } _%>
-
 
 import Home from '../views/Home.vue';
 
@@ -31,7 +29,6 @@ const routes = [
 	}
 ];
 
-
 <%_ if (vueVersion === '2') { _%>
 const router = new VueRouter({
 	<%_ if (historyMode) { _%>
@@ -40,13 +37,12 @@ const router = new VueRouter({
 	routes
 });
 <%_ } _%>
-
 <%_ if (vueVersion === '3') { _%>
 const router = createRouter({
 	<%_ if (historyMode) { _%>
-	history: createWebHashHistory(),
+	history: createWebHistory(),
 	<%_ } else { _%>
-		history: createWebHistory(),
+	history: createWebHashHistory(),
 	<%_ } _%>
 	routes
 });

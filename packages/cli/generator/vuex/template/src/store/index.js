@@ -15,7 +15,6 @@ export default new Vuex.Store({
   },
 });
 <%_ } _%>
-
 <%_ if (vueVersion === '3') { _%>
 import { createStore } from 'vuex';
 

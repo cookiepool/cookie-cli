@@ -28,7 +28,7 @@ module.exports = {
           }	
         ]
       },
-      <%_ } %>
+      <%_ } _%>
       {
         test: /\.css$/,
         use: [
@@ -99,9 +99,9 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
-      <% if (projectName) { %>
+      <%_ if (projectName) { _%>
       title: '<%= projectName %>',
-      <% } %>
+      <%_ } _%>
       template: path.resolve(__dirname, '../public/index.html'),
       filename: path.resolve(__dirname, '../dist/index.html')
     }),
