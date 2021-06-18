@@ -6,7 +6,9 @@ module.exports = {
   plugins: ['vue', 'prettier'],
   extends: ['plugin:vue/recommended', 'plugin:prettier/recommended'],
   parserOptions: {
+    <%_ if(webpack) { _%>
     parser: 'babel-eslint',
+    <%_ } _%>
     sourceType: 'module',
     ecmaVersion: 2020
   },

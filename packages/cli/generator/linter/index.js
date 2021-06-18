@@ -6,8 +6,10 @@ const map = {
   }
 };
 
-module.exports = (generator, { lintOn, eslintConfig }) => {
-  generator.render('./template');
+module.exports = (generator, { lintOn, eslintConfig, features }) => {
+  generator.render('./template', {
+    webpack: features.includes('webpack')
+  });
 
   generator.extendPackage({
     scripts: {
@@ -15,12 +17,19 @@ module.exports = (generator, { lintOn, eslintConfig }) => {
       'lint:fix': 'eslint --fix --ext .js,.vue src',
     },
     devDependencies: {
-      'babel-eslint': '^10.0.3',
       'eslint': '^7.26.0',
       'eslint-plugin-vue': '^7.6.0',
       ...map[eslintConfig],
     },
   });
+
+  if(features.includes('webpack')) {
+    generator.extendPackage({
+      devDependencies: {
+        'babel-eslint': '^10.0.3'
+      }
+    });
+  }
 
   if (lintOn.includes('commit')) {
     generator.extendPackage({

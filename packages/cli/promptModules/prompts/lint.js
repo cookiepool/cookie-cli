@@ -25,16 +25,14 @@ module.exports = (api) => {
     message: 'Pick additional lint features:',
     when: answers => answers.features.includes('linter'),
     type: 'checkbox',
-    choices: [
-      {
-        name: 'Lint on save',
-        value: 'save',
-        checked: true,
-      },
-      {
-        name: 'Lint and fix on commit',
-        value: 'commit',
-      },
-    ]
+    choices: [{
+      name: 'Lint on save',
+      value: 'save',
+      checked: true,
+    },
+    {
+      name: 'Lint and fix on commit',
+      value: 'commit',
+    }]
   });
 };
