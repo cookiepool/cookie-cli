@@ -11,7 +11,9 @@ module.exports = {
   extends: ['plugin:vue3/recommended', 'plugin:prettier/recommended'],
   <%_ } _%>
   parserOptions: {
+    <%_ if(webpack) { _%>
     parser: 'babel-eslint',
+    <%_ } _%>
     sourceType: 'module',
     ecmaVersion: 2020
   },

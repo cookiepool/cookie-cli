@@ -1,4 +1,20 @@
 module.exports = (generator, options = {}, projectName) => {
+  if(options.vueVersion === '2') {
+    generator.extendPackage({
+      devDependencies: {
+        'vue-loader': '^15.7.2'
+      }
+    });
+  }
+
+  if(options.vueVersion === '3') {
+    generator.extendPackage({
+      devDependencies: {
+        'vue-loader': '^16.2.0'
+      }
+    });
+  }
+
   generator.extendPackage({
     scripts: {
       "dev": "webpack-dev-server --config ./build/webpack.dev.js --progress",
