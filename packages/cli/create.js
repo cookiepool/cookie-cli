@@ -145,7 +145,9 @@ async function create (name, options) {
   await executeCommand('npm', path.join(process.cwd(), name));
 
   // 自动生成的模板不符合prettier的格式，需要执行一次lint:fix操作
-  await executeLintCommand('npm', path.join(process.cwd(), name));
+  if(answers.features.includes('linter')) {
+    await executeLintCommand('npm', path.join(process.cwd(), name));
+  }
 
   console.log(chalk.blueBright('---------- THE END ----------'));
 }
