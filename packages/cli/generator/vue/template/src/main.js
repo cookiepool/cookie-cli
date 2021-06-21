@@ -20,7 +20,7 @@ new Vue({
   <%_ if(hasVuex) { _%>
   store,
   <%_ } _%>
-  render: (h) => h(App),
+  render: (h) => h(App)
 }).$mount('#app');
 <%_ } _%>
 <%_ if (vueVersion === '3') { _%>

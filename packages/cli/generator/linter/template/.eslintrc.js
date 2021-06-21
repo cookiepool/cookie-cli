@@ -8,7 +8,7 @@ module.exports = {
   extends: ['plugin:vue/recommended', 'plugin:prettier/recommended'],
   <%_ } _%>
   <%_ if(vueVersion === '3') { _%>
-  extends: ['plugin:vue3/recommended', 'plugin:prettier/recommended'],
+  extends: ['plugin:vue/vue3-recommended', 'plugin:prettier/recommended'],
   <%_ } _%>
   parserOptions: {
     <%_ if(webpack) { _%>

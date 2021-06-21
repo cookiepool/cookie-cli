@@ -141,7 +141,7 @@ class Generator {
     // 将反斜杠转换为正斜杠，针对Windows
     normaliseFilePaths(files);
   
-    // 转换imports、options
+    // 转换imports、options，这部分暂时不使用注入的方式，先注释
     // Object.keys(files).forEach((file) => {
     //   let imports = this.imports[file];
     //   imports = imports instanceof Set ? Array.from(imports) : imports;

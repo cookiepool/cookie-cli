@@ -11,7 +11,7 @@ const Creator = require('./promptModules/Creator');
 const PromptModuleAPI = require('./promptModules/PromptModuleAPI');
 const Generator = require('./generator/Generator');
 
-const executeCommand = require('./utils/executeCommand');
+const { executeCommand, executeLintCommand } = require('./utils/executeCommand');
 const { platformPrompts, buildToolsPrompts, vue_webpack, vue_vite } = require('./utils/prePrompts');
 
 async function create (name, options) {
@@ -143,6 +143,9 @@ async function create (name, options) {
   console.log(chalk.blueBright('---------- START DOWNLOADING PACKAGES ----------'));
 
   await executeCommand('npm', path.join(process.cwd(), name));
+
+  // 自动生成的模板不符合prettier的格式，需要执行一次lint:fix操作
+  await executeLintCommand('npm', path.join(process.cwd(), name));
 
   console.log(chalk.blueBright('---------- THE END ----------'));
 }

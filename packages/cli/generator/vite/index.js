@@ -25,6 +25,7 @@ module.exports = (generator, options = {}, projectName) => {
 
   generator.render('./template', {
     vueVersion: options.vueVersion,
-    projectName: projectName || 'Default App Name'
+    projectName: projectName || 'Default App Name',
+    lintOn: options.lintOn
   });
 };

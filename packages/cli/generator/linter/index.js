@@ -38,16 +38,27 @@ module.exports = (generator, { lintOn, eslintConfig, features, vueVersion }) => 
         'husky': '^4.3.8',
         'lint-staged': '^9.5.0',
       },
+      "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+      },
       'lint-staged': {
         '*.{js,vue}': 'eslint'
       }
     });
   }
 
-  if (lintOn.includes('save')) {
+  if (lintOn.includes('save') && features.includes('webpack')) {
     generator.extendPackage({
       devDependencies: {
         'eslint-loader': '^4.0.2',
+      }
+    });
+  } else if(lintOn.includes('save') && features.includes('vite')) {
+    generator.extendPackage({
+      devDependencies: {
+        'vite-plugin-eslint': '^1.1.3',
       }
     });
   }
