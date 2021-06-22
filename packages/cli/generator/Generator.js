@@ -3,7 +3,7 @@ const path = require('path');
 const globby = require('globby');
 const isBinaryFileSync = require('isbinaryfile').isBinaryFileSync;
 const fs = require('fs-extra');
-const { runTransformation } = require('vue-codemod');
+// const { runTransformation } = require('vue-codemod');
 
 const sortObject = require('../utils/sortObject');
 const writeFileTree = require('../utils/writeFileTree');
