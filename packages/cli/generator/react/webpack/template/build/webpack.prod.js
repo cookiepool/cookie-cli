@@ -40,7 +40,12 @@ module.exports = webpackMerge(webpackCommonConfig, {
             loader: miniCSSExtractPlugin.loader
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            }
           },
           {
             loader: 'sass-loader',
@@ -49,7 +54,23 @@ module.exports = webpackMerge(webpackCommonConfig, {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: miniCSSExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
+            }
+          }
+        ]
+      },
     ]
   },
   plugins: [

@@ -5,7 +5,7 @@ const copyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: path.resolve(__dirname, '../src/index.js')
+    index: path.resolve(__dirname, '../src/index.jsx')
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\jsx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [{
           loader: 'babel-loader'

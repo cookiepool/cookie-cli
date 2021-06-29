@@ -12,7 +12,14 @@ const PromptModuleAPI = require('./promptModules/PromptModuleAPI');
 const Generator = require('./generator/Generator');
 
 const { executeCommand, executeLintCommand } = require('./utils/executeCommand');
-const { platformPrompts, buildToolsPrompts, vue_webpack, vue_vite } = require('./utils/prePrompts');
+const {
+  platformPrompts,
+  buildToolsPrompts,
+  vue_webpack,
+  vue_vite,
+  react_webpack,
+  react_vite
+} = require('./utils/prePrompts');
 
 async function create (name, options) {
   const cwdDir = process.cwd();
@@ -136,7 +143,7 @@ async function create (name, options) {
   }
 
   answers.features.forEach((feature) => {
-    require(`./generator/${ feature }`)(generator, answers, name);
+    require(`./generator/${ preAnswers.frame }/${ feature }`)(generator, answers, name);
   });
   await generator.generate();
 
@@ -160,14 +167,11 @@ function getPromptModules(preAnswers) {
     return vue_webpack.map((file) => require(`./promptModules/prompts/${ file }.js`));
   case 'vue_vite':
     return vue_vite.map((file) => require(`./promptModules/prompts/${ file }.js`));
+  case 'react_webpack':
+    return react_webpack.map((file) => require(`./promptModules/prompts/${ file }.js`));
+  case 'react_vite':
+    return react_vite.map((file) => require(`./promptModules/prompts/${ file }.js`)); 
   }
-
-  // return [
-  //   'babel',
-  //   'lint',
-  //   'vue-router',
-  //   'vuex'
-  // ].map((file) => require(`./promptModules/prompts/${ file }.js`));
 }
 
 module.exports = (name, cmd) => {
