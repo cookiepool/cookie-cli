@@ -15,6 +15,7 @@ module.exports = {
   },
   module: {
     rules: [
+      <%_ if(hasBabel) { _%>
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -22,6 +23,7 @@ module.exports = {
           loader: 'babel-loader'
         }]
       },
+      <%_ } _%>
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [{
@@ -62,7 +64,9 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
-      title: 'React Template',
+      <%_ if (projectName) { _%>
+      title: '<%= projectName %>',
+      <%_ } _%>
       template: path.resolve(__dirname, '../public/index.html'),
       filename: path.resolve(__dirname, '../dist/index.html')
     }),

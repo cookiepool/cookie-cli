@@ -1,16 +1,4 @@
 module.exports = (generator, options = {}, projectName) => {
-  let vitePlugin;
-  if(options.vueVersion === '2') {
-    vitePlugin = {
-      'vite-plugin-vue2': '^1.6.2'
-    };
-  }
-  if(options.vueVersion === '3') {
-    vitePlugin = {
-      '@vitejs/plugin-vue': '^1.2.2',
-    };
-  }
-
   generator.extendPackage({
     scripts: {
       'dev': 'vite --host',
@@ -19,13 +7,12 @@ module.exports = (generator, options = {}, projectName) => {
     },
     devDependencies: {
       'vite': '^2.3.3',
-      'sass': '^1.32.13',
-      ...vitePlugin
+      '@vitejs/plugin-react-refresh': '^1.3.4',
+      'sass': '^1.32.13'
     },
   });
 
   generator.render('./template', {
-    vueVersion: options.vueVersion,
     projectName: projectName || 'Default App Name',
     lintOn: options.lintOn
   });

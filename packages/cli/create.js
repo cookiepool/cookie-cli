@@ -95,7 +95,6 @@ async function create (name, options) {
    * 在获取features前，先选择对应的架构和构建工具，根据结果显示指定的
    * ***/
   const preAnswers = await inquirer.prompt([platformPrompts, buildToolsPrompts]);
-  console.log(preAnswers);
 
   // 核心逻辑
   // 获取交互提示语
@@ -137,9 +136,14 @@ async function create (name, options) {
 
   const generator = new Generator(pkg, path.join(process.cwd(), name));
 
-  if(!answers.features.includes('vueVersion')) {
+  // 选择了vue必须选择版本
+  if(answers.features.includes('vue') && !answers.features.includes('vueVersion')) {
     console.log(chalk.red('Vue version must be chosen, please try it again!'));
     process.exit(1);
+  }
+  // 如果选择了react，则必须默认选择babel，不然无法解析jsx。
+  if(answers.features.includes('react') && answers.features.includes('webpack')) {
+    answers.features.push('babel');
   }
 
   answers.features.forEach((feature) => {

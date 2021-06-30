@@ -1,26 +1,26 @@
 const map = {
   prettier: {
-    'prettier': '^2.3.0',
+    'prettier': '^2.3.1',
     'eslint-config-prettier': '^8.3.0',
     'eslint-plugin-prettier': '^3.4.0',
   }
 };
-    
-module.exports = (generator, { lintOn, eslintConfig, features, vueVersion }) => {
+
+module.exports = (generator, { lintOn, eslintConfig, features }) => {
   generator.render('./template', {
-    webpack: features.includes('webpack'),
-    vueVersion: vueVersion
+    webpack: features.includes('webpack')
   });
 
   generator.extendPackage({
     scripts: {
-      'lint': 'eslint --ext .js,.vue src',
-      'lint:fix': 'eslint --fix --ext .js,.vue src',
+      'lint': 'eslint --ext .js,.jsx src',
+      'lint:fix': 'eslint --fix --ext .js,.jsx src',
     },
     devDependencies: {
-      'eslint': '^7.26.0',
-      'eslint-plugin-vue': '^7.6.0',
-      ...map[eslintConfig],
+      'eslint': '^7.29.0',
+      'eslint-plugin-react': '^7.24.0',
+      'eslint-plugin-react-hooks': '^4.2.0',
+      ...map[eslintConfig]
     },
   });
 
@@ -44,7 +44,7 @@ module.exports = (generator, { lintOn, eslintConfig, features, vueVersion }) => 
         }
       },
       'lint-staged': {
-        '*.{js,vue}': 'eslint'
+        '*.{js,jsx}': 'eslint'
       }
     });
   }

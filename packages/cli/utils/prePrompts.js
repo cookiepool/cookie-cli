@@ -32,5 +32,5 @@ exports.buildToolsPrompts = {
 
 exports.vue_webpack = ['babel', 'vueVersion', 'lint', 'router', 'vuex'];
 exports.vue_vite = ['vueVersion', 'lint', 'router', 'vuex'];
-exports.react_webpack = ['babel', 'lint', 'router'];
+exports.react_webpack = ['lint', 'router'];
 exports.react_vite = ['lint', 'router'];

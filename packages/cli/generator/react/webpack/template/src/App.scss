@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
 }
 
 code {
@@ -28,7 +29,6 @@ code {
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,4 +49,36 @@ code {
   to {
     transform: rotate(360deg);
   }
+}
+
+// App.js
+.container {
+  padding-top: 42px;
+}
+.title-wraper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link-title {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.link-line {
+  color: #fff;
+  margin: 0 12px;
+}
+.about-text {
+  text-align: center;
+  color: #fff;
+}
+
+:global .about-wraper {
+  color: red;
+}
+
+.about-h3-text {
+  text-align: center;
+  font-size: 60px;
 }

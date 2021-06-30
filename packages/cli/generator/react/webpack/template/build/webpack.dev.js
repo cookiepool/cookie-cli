@@ -46,15 +46,16 @@ module.exports = webpackMerge(webpackCommonConfig, {
           }
         ]
       },
-      {
+      <%_ if (lintOnSave) { _%>{
         enforce: 'pre',
-        test: /\.(js|vue)$/,
+        test: /\.(js|jsx)$/,
         loader: 'eslint-loader',
         exclude: /node_modules/,
         options: {
           formatter: require('eslint-friendly-formatter')
         }
       }
+      <%_ } _%>
     ]
   },
   plugins: [

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import path from 'path';
-<%_ if(lintOn.includes('save')) { _%>
+<%_ if(lintOn && lintOn.includes('save')) { _%>
 import eslintPlugin from 'vite-plugin-eslint';
 <%_ } _%>
 <%_ if(vueVersion === '3') { _%>
@@ -19,7 +19,7 @@ export default defineConfig({
     <%_ if(vueVersion === '2') { _%>
     createVuePlugin(),
     <%_ } _%>
-    <%_ if(lintOn.includes('save')) { _%>
+    <%_ if(lintOn && lintOn.includes('save')) { _%>
     eslintPlugin()
     <%_ } _%>
   ],
