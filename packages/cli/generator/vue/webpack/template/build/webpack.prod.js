@@ -14,7 +14,7 @@ module.exports = merge(webpackCommonConfig, {
       cacheGroups: {
         vendors: {
           name: 'chunk-vendors',
-          test: /[\\\/]node_modules[\\\/]/,
+          test: /[\\/]node_modules[\\/]/,
           priority: -10,
           chunks: 'all'
         },

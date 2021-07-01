@@ -8,7 +8,12 @@ import { renderRoutes } from 'react-router-config';
 import routes from '@/router';
 import Loading from '@/components/Loading';
 
+<%_ if(buildTool.includes('webpack')) { _%>
 import styles from './App.scss';
+<%_ } _%>
+<%_ if(buildTool.includes('vite')) { _%>
+import styles from './App.module.scss';
+<%_ } _%>
 class App extends React.Component {
   constructor(props) {
     super(props);

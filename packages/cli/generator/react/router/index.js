@@ -11,6 +11,7 @@ module.exports = (generator, options = {}) => {
   });
 
   generator.render('./template', {
-    historyMode: options.historyMode
+    historyMode: options.historyMode,
+    buildTool: options.features
   });
 };

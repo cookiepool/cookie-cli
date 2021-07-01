@@ -89,7 +89,7 @@ async function create (name, options) {
     }
   }
 
-  console.log(chalk.blueBright('---------- TEST PASSED, START THE PROJECT GENERATION OPERATION-----------'));
+  console.log(chalk.blueBright('---------- TEST PASS, START THE PROJECT GENERATION OPERATION-----------'));
 
   /***
    * 在获取features前，先选择对应的架构和构建工具，根据结果显示指定的
@@ -157,6 +157,7 @@ async function create (name, options) {
 
   // 自动生成的模板不符合prettier的格式，需要执行一次lint:fix操作
   if(answers.features.includes('linter')) {
+    console.log(chalk.blueBright('---------- FORMATING CODE STYLE ----------'));
     await executeLintCommand('npm', path.join(process.cwd(), name));
   }
 

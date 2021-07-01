@@ -15,7 +15,7 @@ module.exports = (generator, { lintOn, eslintConfig, features, vueVersion }) => 
   generator.extendPackage({
     scripts: {
       'lint': 'eslint --ext .js,.vue src',
-      'lint:fix': 'eslint --fix --ext .js,.vue src',
+      'lint:fix': 'eslint --fix *.js **/*.js **/*.vue',
     },
     devDependencies: {
       'eslint': '^7.26.0',

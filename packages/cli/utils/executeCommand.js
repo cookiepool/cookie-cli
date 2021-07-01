@@ -24,7 +24,7 @@ exports.executeCommand = function executeCommand(command, pathName) {
 
 exports.executeLintCommand = function executeLintCommand(command, pathName) {
   return new Promise((resolve, reject) => {
-    const childProcess = execa(command, ['run', 'lint:fix'], { 
+    const childProcess = execa(command, ['run', 'lint:fix'], {
       cwd: pathName,
       stdio: ['inherit', 'pipe', 'inherit']
     });

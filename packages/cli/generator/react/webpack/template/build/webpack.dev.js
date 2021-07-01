@@ -5,7 +5,7 @@ const friendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = webpackMerge(webpackCommonConfig, {
   mode: 'development',
-  devtool: "#@cheap-eval-source-map",
+  devtool: '#@cheap-eval-source-map',
   module: {
     rules: [
       {
@@ -39,14 +39,12 @@ module.exports = webpackMerge(webpackCommonConfig, {
           {
             loader: 'css-loader',
             options: {
-              modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]'
-              }
+              modules: false
             }
           }
         ]
-      },
-      <%_ if (lintOnSave) { _%>{
+      }<%_ if (lintOnSave) { _%>,
+      {
         enforce: 'pre',
         test: /\.(js|jsx)$/,
         loader: 'eslint-loader',

@@ -1,7 +1,11 @@
 import React from 'react';
 
+<%_ if(buildTool.includes('webpack')) { _%>
 import styles from '@/App.scss';
-
+<%_ } _%>
+<%_ if(buildTool.includes('vite')) { _%>
+import styles from '@/App.module.scss';
+<%_ } _%>
 class About extends React.Component {
   constructor(props) {
     super(props);

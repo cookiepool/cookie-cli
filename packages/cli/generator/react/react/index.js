@@ -1,4 +1,4 @@
-module.exports = (generator) => {
+module.exports = (generator, options) => {
   generator.extendPackage({
     dependencies: {
       'react': '^17.0.2',
@@ -6,5 +6,7 @@ module.exports = (generator) => {
     }
   });
 
-  generator.render('./template');
+  generator.render('./template', {
+    buildTool: options.features
+  });
 };

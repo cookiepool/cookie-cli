@@ -14,7 +14,7 @@ module.exports = (generator, { lintOn, eslintConfig, features }) => {
   generator.extendPackage({
     scripts: {
       'lint': 'eslint --ext .js,.jsx src',
-      'lint:fix': 'eslint --fix --ext .js,.jsx src',
+      'lint:fix': 'eslint --fix *.js **/*.js **/*.jsx',
     },
     devDependencies: {
       'eslint': '^7.29.0',

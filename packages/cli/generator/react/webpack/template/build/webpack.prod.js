@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const webpackCommonConfig = require('./webpack.config.js');
 const webpackMerge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -15,7 +14,7 @@ module.exports = webpackMerge(webpackCommonConfig, {
         // node_modules下的模块拆分到chunk-vendors.xxxx.js下
         vendors: {
           name: 'chunk-vendors',
-          test: /[\\\/]node_modules[\\\/]/,
+          test: /[\\/]node_modules[\\/]/,
           priority: -10,
           chunks: 'all'
         },
@@ -64,9 +63,7 @@ module.exports = webpackMerge(webpackCommonConfig, {
           {
             loader: 'css-loader',
             options: {
-              modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]'
-              }
+              modules: false
             }
           }
         ]
@@ -93,4 +90,4 @@ module.exports = webpackMerge(webpackCommonConfig, {
       }
     })
   ]
-})
+});
