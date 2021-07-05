@@ -1,0 +1,18 @@
+# common files
+.DS_Store
+node_modules
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitignore
+.npmignore
+package-lock.json
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
