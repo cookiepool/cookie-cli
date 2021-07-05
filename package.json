@@ -1,7 +1,7 @@
 {
   "name": "cookie-cli",
-  "version": "0.0.1",
-  "description": "a personal cli lib",
+  "version": "1.0.0",
+  "description": "A CLI tool for Vue and React",
   "bin": {
     "cookie-cli": "bin/cookie-cli.js"
   },
@@ -14,8 +14,8 @@
   },
   "keywords": [
     "cli",
-    "vue",
-    "react"
+    "vue cli",
+    "react cli"
   ],
   "author": "cookiepool",
   "license": "MIT",
