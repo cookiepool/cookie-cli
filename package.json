@@ -1,9 +1,9 @@
 {
-  "name": "cookie-cli",
+  "name": "create-vuereact-app",
   "version": "1.0.0",
   "description": "A CLI tool for Vue and React",
   "bin": {
-    "cookie-cli": "bin/cookie-cli.js"
+    "create-vuereact-app": "bin/cookie-cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
