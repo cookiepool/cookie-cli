@@ -1,10 +1,9 @@
 # common files
 .DS_Store
 node_modules
-.editorconfig
-.eslintignore
-.eslintrc.js
-.gitignore
+/.editorconfig
+/.eslintignore
+/.eslintrc.js
 .npmignore
 package-lock.json
 

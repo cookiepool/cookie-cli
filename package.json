@@ -1,6 +1,6 @@
 {
   "name": "create-vuereact-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CLI tool for Vue and React",
   "bin": {
     "cookie-cli": "bin/cookie-cli.js"
