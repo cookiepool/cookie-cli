@@ -90,11 +90,14 @@ class Generator {
   }
 
   async generate() {
+    // 将package.json里面关于babel等配置提取出来放在独立文件里面
     this.extraConfigToFile();
+    // 解析模板文件
     await this.resolveFiles();
+    // 排序package.json的字段
     this.sortPkg();
+    // null表示全部序列化，2表示缩进为2个空白字符
     this.files['package.json'] = JSON.stringify(this.pkg, null, 2) + '\n';
-
     // 将所有内容写入到文件并输出到项目目录
     await writeFileTree(this.context, this.files);
   }
